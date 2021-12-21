@@ -1,4 +1,5 @@
 ﻿using ASP6_SinAuth.Areas.Identity.Data;
+using ASP6_SinAuth.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,11 @@ public class ctxDatos : IdentityDbContext<User>
     {
     }
 
+    public DbSet<Test> Test { get; set; }
+    public DbSet<User> User { get; set; }
+    public DbSet<TestType> TestType { get; set; }
+    public DbSet<Laboratory> Laboratory { get; set; }
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
@@ -19,4 +25,6 @@ public class ctxDatos : IdentityDbContext<User>
         // For example, you can rename the ASP.NET Identity table names and more.
         // Add your customizations after calling base.OnModelCreating(builder);
     }
+
+ 
 }
