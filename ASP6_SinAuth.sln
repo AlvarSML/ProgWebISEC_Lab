@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASP6_SinAuth", "ASP6_SinAuth\ASP6_SinAuth.csproj", "{C0F47B41-4B32-4070-9909-7FA2A0853913}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0F47B41-4B32-4070-9909-7FA2A0853913}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0F47B41-4B32-4070-9909-7FA2A0853913}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0F47B41-4B32-4070-9909-7FA2A0853913}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0F47B41-4B32-4070-9909-7FA2A0853913}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B5476EF0-7F0C-4DE5-ACB9-203267838092}
+	EndGlobalSection
+EndGlobal
