@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LPLV68rKfUI0Kg5eyzTCg3PtHzw1ijOCAVZKr4+EaVq3ZCZYX+QtkOjVcKZTi1zxfIBWEWVOEtNpK6hnqTu75Q==",
+  "dgSpecHash": "XLB7MJTiI4elT1bpdFEWQwaTCW9sNjQ1TkPNLJI75tn1e+XJ2qpHD5Jf/826sYflBVw9ACJPj1PuwKVjbaCWGA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\alvar\\source\\repos\\ASp6_SinAuth\\ASP6_SinAuth\\ASP6_SinAuth.csproj",
+  "projectFilePath": "C:\\Users\\alvar\\source\\repos\\ASP6_SinAuth\\ProgWebISEC_Lab\\ASP6_SinAuth\\ASP6_SinAuth.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alvar\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\alvar\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
