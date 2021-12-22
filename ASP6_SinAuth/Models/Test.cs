@@ -25,7 +25,7 @@ namespace ASP6_SinAuth.Models
         public int result { get; set; }
 
         [Column("client_id")]
-        public User client{ get; set; }
+        public Client client{ get; set; }
 
         [Required]
         [Column("type_id")]
@@ -33,7 +33,7 @@ namespace ASP6_SinAuth.Models
 
 
         [Column("technician_id")]
-        public User technician { get; set; }
+        public LaboratoryWorker technician { get; set; }
 
     }
 }

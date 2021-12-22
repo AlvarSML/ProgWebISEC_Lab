@@ -4,6 +4,7 @@ using ASP6_SinAuth.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ASP6_SinAuth.Migrations
 {
     [DbContext(typeof(ctxDatos))]
-    partial class ctxDatosModelSnapshot : ModelSnapshot
+    [Migration("20211222192343_herencia")]
+    partial class herencia
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -327,16 +329,6 @@ namespace ASP6_SinAuth.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("ASP6_SinAuth.Models.Client", b =>
-                {
-                    b.HasBaseType("ASP6_SinAuth.Areas.Identity.Data.User");
-
-                    b.Property<int>("age")
-                        .HasColumnType("int");
-
-                    b.ToTable("Clients");
-                });
-
             modelBuilder.Entity("ASP6_SinAuth.Models.LaboratoryWorker", b =>
                 {
                     b.HasBaseType("ASP6_SinAuth.Areas.Identity.Data.User");
@@ -351,11 +343,11 @@ namespace ASP6_SinAuth.Migrations
 
             modelBuilder.Entity("ASP6_SinAuth.Models.Test", b =>
                 {
-                    b.HasOne("ASP6_SinAuth.Models.Client", "client")
+                    b.HasOne("ASP6_SinAuth.Areas.Identity.Data.User", "client")
                         .WithMany()
                         .HasForeignKey("clientId");
 
-                    b.HasOne("ASP6_SinAuth.Models.LaboratoryWorker", "technician")
+                    b.HasOne("ASP6_SinAuth.Areas.Identity.Data.User", "technician")
                         .WithMany()
                         .HasForeignKey("technicianId");
 
@@ -420,15 +412,6 @@ namespace ASP6_SinAuth.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("ASP6_SinAuth.Models.Client", b =>
-                {
-                    b.HasOne("ASP6_SinAuth.Areas.Identity.Data.User", null)
-                        .WithOne()
-                        .HasForeignKey("ASP6_SinAuth.Models.Client", "Id")
-                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
                 });
 

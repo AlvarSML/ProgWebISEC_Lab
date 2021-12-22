@@ -17,6 +17,8 @@ public class ctxDatos : IdentityDbContext<User>
     public DbSet<User> User { get; set; }
     public DbSet<TestType> TestType { get; set; }
     public DbSet<Laboratory> Laboratory { get; set; }
+    public DbSet<LaboratoryWorker> LaboratoryWorkers { get; set; }
+    public DbSet<Client> Client { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

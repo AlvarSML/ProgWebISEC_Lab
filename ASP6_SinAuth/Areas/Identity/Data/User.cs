@@ -21,6 +21,6 @@ public class User : IdentityUser
     [PersonalData]
     public DateTime DOB { get; set; }
 
-    public Laboratory? laboratory { get; set; }
+    
 }
 
