@@ -59,6 +59,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/alvar/source/repos/ASP6_SinAuth/ProgWebISEC_Lab/ASP6_SinAuth/Views/Laboratories/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFib3JhdG9yaWVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alvar/source/repos/ASP6_SinAuth/ProgWebISEC_Lab/ASP6_SinAuth/Views/Laboratories/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFib3JhdG9yaWVzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alvar/source/repos/ASP6_SinAuth/ProgWebISEC_Lab/ASP6_SinAuth/Views/Laboratories/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFib3JhdG9yaWVzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alvar/source/repos/ASP6_SinAuth/ProgWebISEC_Lab/ASP6_SinAuth/Views/Laboratories/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFib3JhdG9yaWVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alvar/source/repos/ASP6_SinAuth/ProgWebISEC_Lab/ASP6_SinAuth/Views/Laboratories/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFib3JhdG9yaWVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/alvar/source/repos/ASP6_SinAuth/ProgWebISEC_Lab/ASP6_SinAuth/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -69,6 +89,46 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/alvar/source/repos/ASP6_SinAuth/ProgWebISEC_Lab/ASP6_SinAuth/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alvar/source/repos/ASP6_SinAuth/ProgWebISEC_Lab/ASP6_SinAuth/Views/Tests/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alvar/source/repos/ASP6_SinAuth/ProgWebISEC_Lab/ASP6_SinAuth/Views/Tests/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alvar/source/repos/ASP6_SinAuth/ProgWebISEC_Lab/ASP6_SinAuth/Views/Tests/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alvar/source/repos/ASP6_SinAuth/ProgWebISEC_Lab/ASP6_SinAuth/Views/Tests/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alvar/source/repos/ASP6_SinAuth/ProgWebISEC_Lab/ASP6_SinAuth/Views/Tests/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alvar/source/repos/ASP6_SinAuth/ProgWebISEC_Lab/ASP6_SinAuth/Views/TestTypes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFR5cGVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alvar/source/repos/ASP6_SinAuth/ProgWebISEC_Lab/ASP6_SinAuth/Views/TestTypes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFR5cGVzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alvar/source/repos/ASP6_SinAuth/ProgWebISEC_Lab/ASP6_SinAuth/Views/TestTypes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFR5cGVzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alvar/source/repos/ASP6_SinAuth/ProgWebISEC_Lab/ASP6_SinAuth/Views/TestTypes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFR5cGVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alvar/source/repos/ASP6_SinAuth/ProgWebISEC_Lab/ASP6_SinAuth/Views/TestTypes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFR5cGVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/alvar/source/repos/ASP6_SinAuth/ProgWebISEC_Lab/ASP6_SinAuth/Views/_ViewImports.cshtml]

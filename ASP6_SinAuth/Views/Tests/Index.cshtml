@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ASP6_SinAuth.Models.Test>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.creationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.testDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.result)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.creationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.testDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.result)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
