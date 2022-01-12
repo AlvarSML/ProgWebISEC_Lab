@@ -1,8 +1,24 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@using ASP6_SinAuth.Areas.Identity.Data
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <h1 class="display-4">Main menu</h1>
+        <a asp-controller="Tests" asp-action="">Tests</a>
+        <a asp-controller="TestsType" asp-action="">Tests Types</a>
+        <a asp-controller="TestsType" asp-action="">Clients</a>
+    } else
+    {
+        <h1 class="display-4">Welcome to the clinic</h1>
+        <p>Please register or create a new account</p>
+    }
+
 </div>
