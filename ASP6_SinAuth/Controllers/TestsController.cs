@@ -8,22 +8,39 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ASP6_SinAuth.Data;
 using ASP6_SinAuth.Models;
+using System.Security.Claims;
 
 namespace ASP6_SinAuth.Controllers
 {
     public class TestsController : Controller
     {
         private readonly ctxDatos _context;
+        public List<TestType> types;
 
         public TestsController(ctxDatos context)
         {
             _context = context;
+            
         }
+
+ 
 
         // GET: Tests
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Test.ToListAsync());
+            List<Test> tests;
+
+            if (User.IsInRole("admin") || User.IsInRole("manager"))
+            {
+                tests = await _context.Test.ToListAsync();
+            }
+            else
+            {
+                tests = await _context.Test.Where(t => t.client.Email == User.Identity.Name).ToListAsync();
+            }
+
+            //ViewBag.types = _context.TestType.ToList();
+            return View(tests);
         }
 
         // GET: Tests/Details/5
@@ -33,6 +50,7 @@ namespace ASP6_SinAuth.Controllers
             {
                 return NotFound();
             }
+
 
             var test = await _context.Test
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -47,6 +65,8 @@ namespace ASP6_SinAuth.Controllers
         // GET: Tests/Create
         public IActionResult Create()
         {
+            ViewData["type"] = new SelectList(_context.TestType, "Id", "type");
+            ViewData["client"] = User.Identity.Name;
             return View();
         }
 
@@ -55,16 +75,28 @@ namespace ASP6_SinAuth.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,description,creationDate,testDate,result")] Test test)
+        public async Task<IActionResult> Create([Bind("Id,description,testDate,type")] Test test, int type)
         {
-            if (ModelState.IsValid)
-            {
+            if (User.Identity.IsAuthenticated)
+            {    
+                ClaimsPrincipal currentUser = User;
+                var currentUserID = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
+                
+                test.client = _context.Client.Find(currentUserID);
+                test.type = _context.TestType.Find(type);
+                test.creationDate = DateTime.Now;
+
                 _context.Add(test);
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
-            } else {
+            }
+            else
+            {
+                Console.WriteLine("Error de modelo");
                 Console.WriteLine(test.ToString());
             }
+
+            ViewData["type"] = new SelectList(_context.TestType, "Id", "type", test.type);
             return View(test);
         }
 
@@ -81,6 +113,9 @@ namespace ASP6_SinAuth.Controllers
             {
                 return NotFound();
             }
+
+            
+
             return View(test);
         }
 

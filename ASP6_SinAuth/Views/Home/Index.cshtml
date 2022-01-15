@@ -20,9 +20,10 @@
 
         @if (User.IsInRole("admin"))
         {
-            <a asp-controller="Roles">Roles</a>
-            <a asp-controller="">Workers</a>
-            <a asp-controller="">Users</a>
+            <a asp-controller="Roles">Roles</a><br />
+            <a asp-controller="Laboratories">Laboratories</a><br/>
+            <a asp-controller="LabWorkers">Lab. Workers</a><br />
+            <a asp-controller="">Clients</a><br />
         }
 
 

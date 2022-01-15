@@ -14,15 +14,15 @@ namespace ASP6_SinAuth.Models
         public int Id { get; set; }
         public string? description { get; set; }
 
-        [Timestamp]
         [Required]
         [Column("creation_date")]
         public DateTime creationDate { get; set; }
 
         [Column("test_date")]
+        [Required(ErrorMessage ="Please add a testing date")]
         public DateTime testDate { get; set; }
 
-        public int result { get; set; }
+        public int? result { get; set; }
 
         [Column("client_id")]
         public Client client{ get; set; }
@@ -33,7 +33,7 @@ namespace ASP6_SinAuth.Models
 
 
         [Column("technician_id")]
-        public LaboratoryWorker technician { get; set; }
+        public LaboratoryWorker? technician { get; set; }
 
     }
 }

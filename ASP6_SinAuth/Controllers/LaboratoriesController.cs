@@ -23,6 +23,7 @@ namespace ASP6_SinAuth.Controllers
         // GET: Laboratories
         public async Task<IActionResult> Index()
         {
+       
             return View(await _context.Laboratory.ToListAsync());
         }
 
