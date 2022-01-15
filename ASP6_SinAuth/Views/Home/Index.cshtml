@@ -1,8 +1,10 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using ASP6_SinAuth.Areas.Identity.Data
+@using Microsoft.AspNetCore.Identity
 
 @inject SignInManager<User> SignInManager
 @inject UserManager<User> UserManager
+@inject RoleManager<IdentityRole> roleManager
 
 @{
     ViewData["Title"] = "Home Page";
@@ -13,12 +15,24 @@
     {
         <h1 class="display-4">Main menu</h1>
         <a asp-controller="Tests" asp-action="">Tests</a>
-        <a asp-controller="TestsType" asp-action="">Tests Types</a>
+        <a asp-controller="TestTypes" asp-action="">Tests Types</a>
         <a asp-controller="TestsType" asp-action="">Clients</a>
-    } else
+
+        @if (User.IsInRole("admin"))
+        {
+            <a asp-controller="Roles">Roles</a>
+            <a asp-controller="">Workers</a>
+            <a asp-controller="">Users</a>
+        }
+
+
+    }
+    else
     {
         <h1 class="display-4">Welcome to the clinic</h1>
         <p>Please register or create a new account</p>
+        <hr />
+        <p>Or see our offers<a asp-controller="TestTypes" asp-action="">Tests Types</a> </p>
     }
 
 </div>

@@ -8,6 +8,10 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ASP6_SinAuth.Data;
 using ASP6_SinAuth.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Razor.TagHelpers;
+using Microsoft.AspNetCore.Mvc.TagHelpers;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace ASP6_SinAuth.Controllers
 {
@@ -18,6 +22,16 @@ namespace ASP6_SinAuth.Controllers
         public TestTypesController(ctxDatos context)
         {
             _context = context;
+        }
+
+        [BindProperty]
+        public InputModel Input { get; set; }
+
+        public class InputModel
+        {
+            public string type { get; set; }
+            public string description { get; set; }
+            public float price { get; set; }
         }
 
         // GET: TestTypes
@@ -45,6 +59,7 @@ namespace ASP6_SinAuth.Controllers
         }
 
         // GET: TestTypes/Create
+        [Authorize(Roles = "admin, manager")]
         public IActionResult Create()
         {
             return View();
@@ -55,10 +70,14 @@ namespace ASP6_SinAuth.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,type,description")] TestType testType)
+        [Authorize(Roles = "admin, manager")]
+        public async Task<IActionResult> Create([Bind("Id,type,description")] TestType testType, String price)
         {
+            Decimal p;
             if (ModelState.IsValid)
             {
+                Decimal.TryParse(price.Replace('.', ','), out p);
+                testType.price = p;
                 _context.Add(testType);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -67,6 +86,7 @@ namespace ASP6_SinAuth.Controllers
         }
 
         // GET: TestTypes/Edit/5
+        [Authorize(Roles = "admin, manager")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -87,8 +107,10 @@ namespace ASP6_SinAuth.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,type,description")] TestType testType)
+        [Authorize(Roles = "admin, manager")]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,type,description,price")] TestType testType,string price)
         {
+            Decimal p;
             if (id != testType.Id)
             {
                 return NotFound();
@@ -98,6 +120,8 @@ namespace ASP6_SinAuth.Controllers
             {
                 try
                 {
+                    Decimal.TryParse(price.Replace('.', ','), out p);
+                    testType.price = p;
                     _context.Update(testType);
                     await _context.SaveChangesAsync();
                 }
@@ -118,6 +142,7 @@ namespace ASP6_SinAuth.Controllers
         }
 
         // GET: TestTypes/Delete/5
+        [Authorize(Roles = "admin, manager")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -136,6 +161,7 @@ namespace ASP6_SinAuth.Controllers
         }
 
         // POST: TestTypes/Delete/5
+        [Authorize(Roles = "admin, manager")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

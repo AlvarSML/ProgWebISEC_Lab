@@ -62,6 +62,8 @@ namespace ASP6_SinAuth.Controllers
                 _context.Add(test);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
+            } else {
+                Console.WriteLine(test.ToString());
             }
             return View(test);
         }
