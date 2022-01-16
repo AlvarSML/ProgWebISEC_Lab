@@ -1,6 +1,9 @@
-﻿using ASP6_SinAuth.Data;
+﻿using ASP6_SinAuth.Areas.Identity.Data;
+using ASP6_SinAuth.Data;
+using ASP6_SinAuth.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace ASP6_SinAuth.Controllers
@@ -18,7 +21,7 @@ namespace ASP6_SinAuth.Controllers
         // GET: LabWorkers
         public async Task<IActionResult> Index()
         {
-            return View(_context.LaboratoryWorkers.Include(l => l.laboratory));
+            return View(await _context.User.Where(u=>u.laboratory!=null).Include(l => l.laboratory).ToListAsync());
         }
 
         // GET: LabWorkers/Details/5
@@ -30,22 +33,29 @@ namespace ASP6_SinAuth.Controllers
         // GET: LabWorkers/Create
         public ActionResult Create()
         {
+            ViewBag.Id = new SelectList(_context.User, "Id", "Email");
+            ViewBag.Laboratory = new SelectList(_context.Laboratory, "Id", "Name");
             return View();
         }
 
         // POST: LabWorkers/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Create(string Id, int laboratory)
         {
-            try
+            User user = _context.User.Find(Id);
+ 
+            if (user != null)
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
+                user.laboratory = _context.Laboratory.Find(laboratory);
+                _context.Update(user);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            } else
             {
-                return View();
+                Console.WriteLine("Error creatring the worker ");
             }
+            return View(user);
         }
 
         // GET: LabWorkers/Edit/5

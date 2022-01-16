@@ -33,7 +33,7 @@ namespace ASP6_SinAuth.Models
 
 
         [Column("technician_id")]
-        public LaboratoryWorker? technician { get; set; }
+        public User? technician { get; set; }
 
     }
 }

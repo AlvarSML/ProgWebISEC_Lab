@@ -18,8 +18,11 @@ public class User : IdentityUser
     [Required]
     public string Name { get; set; }
 
+    // Date of Born
     [PersonalData]
     public DateTime DOB { get; set; }
+
+    public Laboratory? laboratory { get; set; }
 
     
 }
