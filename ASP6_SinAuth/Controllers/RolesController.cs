@@ -59,6 +59,7 @@ namespace ASP6_SinAuth.Controllers
         // GET: RolesController/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
+            var list2;
             IdentityRole role = await _roleManager.FindByIdAsync(id);
             List<User> members = new List<User>();
             List<User> nonMembers = new List<User>();
