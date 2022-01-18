@@ -62,6 +62,7 @@ namespace ASP6_SinAuth.Controllers
             IdentityRole role = await _roleManager.FindByIdAsync(id);
             List<User> members = new List<User>();
             List<User> nonMembers = new List<User>();
+
             foreach (User user in _userManager.Users)
             {
                 var list = await _userManager.IsInRoleAsync(user, role.Name) ? members : nonMembers;
@@ -110,7 +111,7 @@ namespace ASP6_SinAuth.Controllers
             else
                 return await Edit(model.RoleId);
         }
-    }
+
 
         // GET: RolesController/Delete/5
         public ActionResult Delete(int id)

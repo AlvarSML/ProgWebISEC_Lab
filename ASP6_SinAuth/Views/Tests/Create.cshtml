@@ -1,4 +1,4 @@
-﻿@model ASP6_SinAuth.Models.Test
+﻿@model ASP6_SinAuth.Models.ViewModels.TestCreation
 
 @{
     ViewData["Title"] = "Create";
@@ -8,37 +8,68 @@
 
 <h4>Test</h4>
 <hr />
+<form asp-action="Create">
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        
+
+            <input type="hidden" name="userId" value="@Model.userId" />
+
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            
+
             <div class="form-group">
-                <label asp-for="testDate" class="control-label">Desired test date *</label>
-                <input asp-for="testDate" class="form-control" />
-                <span asp-validation-for="testDate" class="text-danger"></span>
+                <label asp-for="test.testDate" class="control-label">Desired test date *</label>
+                <input name="testDate" asp-format="{0:yyyy-MM-ddTHH:mm}" asp-for="test.testDate" class="form-control" />
+                <span asp-validation-for="test.testDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="type" class="control-label">Test type *</label>
-                <select asp-for="type" class ="form-control" asp-items="ViewBag.type"></select>
+                <label asp-for="@Model.test.type" class="control-label">Test type *</label>
+                <select name="typeId" asp-for="@Model.test.type" class="form-control" asp-items="ViewBag.type"></select>
             </div>
             <div class="form-group">
-                <label asp-for="description" class="control-label">Annotations</label>
-                <input asp-for="description" class="form-control" />
-                <span asp-validation-for="description" class="text-danger"></span>
+                <label asp-for="@Model.test.description" class="control-label">Annotations</label>
+                <input name="comment" asp-for="@Model.test.description" class="form-control" />
+                <span asp-validation-for="@Model.test.description" class="text-danger"></span>
             </div>
-    
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
-        </form>
+    </div>
+    <div class="col-md-8">
+  
+            <h2 class="bg-info p-1 text-white">Select laboratory</h2>
+            <table class="table table-bordered table-sm">
+                @if (Model.laboratories.Count() == 0)
+                {
+                    <tr><td colspan="2">There are no laboratories yet</td></tr>
+                }
+                else
+                {
+                    @foreach (Laboratory lab in Model.laboratories)
+                    {
+                        <tr>
+                            <td>@lab.Name</td>
+                            <td>@lab.Location</td>
+                            <td>@lab.Phone</td>
+                            <td>
+                                <input name="labId" type="radio" asp-for="test.laboratory" value="@lab.Id">
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+       
     </div>
 </div>
+ </form>
 
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
 }

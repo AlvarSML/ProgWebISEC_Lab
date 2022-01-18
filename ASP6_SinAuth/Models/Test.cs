@@ -25,12 +25,16 @@ namespace ASP6_SinAuth.Models
         public int? result { get; set; }
 
         [Column("client_id")]
-        public Client client{ get; set; }
+        [Required]
+        public User client{ get; set; }
 
         [Required]
         [Column("type_id")]
         public TestType type { get; set; }
 
+        [Required]
+        [Column("laboratory_id")]
+        public Laboratory laboratory { get; set; }
 
         [Column("technician_id")]
         public User? technician { get; set; }

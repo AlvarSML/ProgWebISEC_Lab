@@ -1,24 +1,14 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@using ASP6_SinAuth.Areas.Identity.Data
-@using Microsoft.AspNetCore.Identity
-@using ASP6_SinAuth.Models.ViewModels
-
-@inject SignInManager<User> SignInManager
-@inject UserManager<User> UserManager
-@inject RoleManager<IdentityRole> roleManager
-
-@model ClientHome
+@model ASP6_SinAuth.Models.ViewModels.ClientHome
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Index";
 }
 
+
 <div class="text-center">
-    @if (SignInManager.IsSignedIn(User))
+    @if (User.IsInRole("LaboratoryWorker"))
     {
-        <h1 class="display-4">Main menu</h1>
-        <a class="btn btn-sm btn-primary" asp-controller="Tests" asp-action="Create">Book a test</a>
-        <a class="btn btn-sm btn-primary" asp-controller="TestTypes" asp-action="">Catalog</a>
         <div class="row">
             <div class="col-md-8">
                 <h3 class="display-6">Planned tests</h3>
@@ -58,35 +48,6 @@
                 </table>
             </div>
         </div>
-
-        @if (User.IsInRole("LaboratoryWorker") || User.IsInRole("LABORATORYWORKER"))
-        {
-            <h3>Laboratory menu</h3>
-            <a class="btn btn-sm btn-primary" asp-controller="Tests" asp-action="LabView">Tests in the lab</a>
-            <hr/>
-        }
-
-        @if (User.IsInRole("admin"))
-        {
-            <h3>Admin menu</h3>
-            <hr/>
-            <a class="btn btn-sm btn-primary" asp-controller="Tests" asp-action="">Tests</a>
-            <br />
-            <a class="btn btn-sm btn-primary" asp-controller="Roles">Roles</a>
-
-            <br />
-            <a class="btn btn-sm btn-primary" asp-controller="Laboratories">Laboratories</a>
-
-            <br />
-            <a class="btn btn-sm btn-primary" asp-controller="LabWorkers">Lab. Workers</a>
-
-            <br />
-            <a class="btn btn-sm btn-primary" asp-controller="">Clients</a>
-
-            <br />
-            <a class="btn btn-sm btn-primary" asp-controller="TestsType" asp-action="">Clients</a>
-            <br />
-        }
     }
     else
     {

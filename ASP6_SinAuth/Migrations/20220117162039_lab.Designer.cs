@@ -4,6 +4,7 @@ using ASP6_SinAuth.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ASP6_SinAuth.Migrations
 {
     [DbContext(typeof(ctxDatos))]
-    partial class ctxDatosModelSnapshot : ModelSnapshot
+    [Migration("20220117162039_lab")]
+    partial class lab
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -137,7 +139,6 @@ namespace ASP6_SinAuth.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("clientId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("creationDate")
@@ -365,9 +366,7 @@ namespace ASP6_SinAuth.Migrations
                 {
                     b.HasOne("ASP6_SinAuth.Areas.Identity.Data.User", "client")
                         .WithMany()
-                        .HasForeignKey("clientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("clientId");
 
                     b.HasOne("ASP6_SinAuth.Models.Laboratory", "laboratory")
                         .WithMany()
