@@ -13,8 +13,7 @@ namespace ASP6_SinAuth.Controllers
 
         private readonly ctxDatos _context;
 
-        public LabWorkers(ctxDatos context)
-        {
+        public LabWorkers(ctxDatos context){
             _context = context;
         }
 
