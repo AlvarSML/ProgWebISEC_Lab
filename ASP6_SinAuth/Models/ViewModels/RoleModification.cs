@@ -11,6 +11,6 @@ namespace ASP6_SinAuth.Models.ViewModels
 
         public string[] AddIds { get; set; }
 
-        public string[] DeleteIds { get; set; }
+        public string[]? DeleteIds { get; set; }
     }
 }

@@ -219,7 +219,7 @@ namespace ASP6_SinAuth.Controllers
             IEnumerable<Test> labTests = await _context.Test
                 .Include(t => t.client)
                 .Include(t => t.laboratory)
-                //.Where(t => t.laboratory.Id == labId)
+                .Where(t => t.laboratory.Id == usr.Id)
                 .Include(t => t.type)
                 .Include(t => t.technician)                
                 .ToListAsync();
