@@ -211,7 +211,7 @@ namespace ASP6_SinAuth.Controllers
         {
             ClientHome ch = new ClientHome();
             string userId = _userManager.GetUserId(User);
-            Laboratory usr = _context.User
+            /*Laboratory usr = _context.User
                 .Include(u => u.laboratory)
                 .First(u => u.Id == userId)
                 .laboratory;
@@ -228,7 +228,7 @@ namespace ASP6_SinAuth.Controllers
                 .Where(t => t.testDate.CompareTo(DateTime.Now) > 0);
 
             ch.Results = labTests
-                .Where(t => t.testDate.CompareTo(DateTime.Now) < 0);
+                .Where(t => t.testDate.CompareTo(DateTime.Now) < 0);*/
 
             return View(ch);
         }

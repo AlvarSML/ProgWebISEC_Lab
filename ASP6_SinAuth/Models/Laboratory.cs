@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ASP6_SinAuth.Areas.Identity.Data;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ASP6_SinAuth.Models
@@ -15,5 +16,10 @@ namespace ASP6_SinAuth.Models
         [Column("phone")]
         public string? Phone { get; set; }
 
+        [Column("LabOwnerId")]
+        [Required]
+        public virtual User LabOwner { get; set; }
+
+        public virtual User test { get; set; }
     }
 }

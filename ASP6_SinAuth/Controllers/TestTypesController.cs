@@ -12,16 +12,20 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using Microsoft.AspNetCore.Identity;
+using ASP6_SinAuth.Areas.Identity.Data;
 
 namespace ASP6_SinAuth.Controllers
 {
     public class TestTypesController : Controller
     {
         private readonly ctxDatos _context;
+        private readonly UserManager<User> _userManager;
 
-        public TestTypesController(ctxDatos context)
+        public TestTypesController(ctxDatos context, UserManager<User> userManager )
         {
             _context = context;
+            _userManager = userManager;
         }
 
         [BindProperty]
@@ -35,12 +39,18 @@ namespace ASP6_SinAuth.Controllers
         }
 
         // GET: TestTypes
+        [Authorize(Roles="LaboratoryManager")]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.TestType.ToListAsync());
+            string uid = _userManager.GetUserId(User);
+            LaboratoryManager lm = _context.LaboratoryManager.Find(uid);
+            IEnumerable<Laboratory> labs = _context.Laboratory.Where(l => l.LabOwner == lm);
+
+            return View(await _context.TestType.Where(t=>labs.Contains(t.laboratory)).ToListAsync());
         }
 
         // GET: TestTypes/Details/5
+        [Authorize(Roles = "LaboratoryManager")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -59,9 +69,10 @@ namespace ASP6_SinAuth.Controllers
         }
 
         // GET: TestTypes/Create
-        [Authorize(Roles = "admin, manager")]
+        [Authorize(Roles = "LaboratoryManager")]
         public IActionResult Create()
         {
+            ViewData["labs"] = new SelectList(getLabsByOwner(), "Id", "Name");
             return View();
         }
 
@@ -70,8 +81,8 @@ namespace ASP6_SinAuth.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "admin, manager")]
-        public async Task<IActionResult> Create([Bind("Id,type,description")] TestType testType, String price)
+        [Authorize(Roles = "LaboratoryManager")]
+        public async Task<IActionResult> Create([Bind("Id,type,description")] TestType testType, String price, int laboratoryId)
         {
             Decimal p;
             if (ModelState.IsValid)
@@ -175,6 +186,14 @@ namespace ASP6_SinAuth.Controllers
         private bool TestTypeExists(int id)
         {
             return _context.TestType.Any(e => e.Id == id);
+        }
+
+        private IEnumerable<Laboratory> getLabsByOwner()
+        {
+            string uid = _userManager.GetUserId(User);
+            LaboratoryManager lm = _context.LaboratoryManager.Find(uid);
+            return _context.Laboratory.Where(l => l.LabOwner == lm);
+
         }
     }
 }

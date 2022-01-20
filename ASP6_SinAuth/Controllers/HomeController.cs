@@ -25,27 +25,33 @@ namespace ASP6_SinAuth.Controllers
         // /GET/INDEX
         public async Task<IActionResult> Index()
         {
-            ClientHome ch = new ClientHome();
-            string userId = _userManager.GetUserId(User);
-
-            Boolean a = User.IsInRole("LaboratoryWorker");
-
-            IEnumerable<Test> testsUser = await _context.Test
-                .Include(t => t.client)
-                .Where(t => t.client.Id == userId)
-                .Include(t => t.type)
-                .Include(t => t.technician)
-                .Include(t => t.laboratory)
-                .ToListAsync();
-
-            ch.FutureTests = testsUser
-                .Where(t => t.testDate.CompareTo(DateTime.Now) > 0);
+            if (User.Identity.IsAuthenticated)
+            {
+                ClientHome ch = new ClientHome();
+                string userId = _userManager.GetUserId(User);
 
 
-            ch.Results = testsUser
-                .Where(t => t.result != null);
+                /*IEnumerable<Test> testsUser = await _context.Test
+                    .Include(t => t.client)
+                    .Where(t => t.client.Id == userId)
+                    .Include(t => t.type)
+                    .Include(t => t.technician)
+                    .Include(t => t.laboratory)
+                    .ToListAsync();
 
-            return View(ch);
+                ch.FutureTests = testsUser
+                    .Where(t => t.testDate.CompareTo(DateTime.Now) > 0);
+
+
+                ch.Results = testsUser
+                    .Where(t => t.result != null); */
+
+                return View(ch);
+            } else
+            {
+                return View();
+            }
+            
         }
 
         public IActionResult Privacy()

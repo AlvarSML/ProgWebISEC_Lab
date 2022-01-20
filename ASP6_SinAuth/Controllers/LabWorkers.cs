@@ -21,7 +21,7 @@ namespace ASP6_SinAuth.Controllers
         // GET: LabWorkers
         public async Task<IActionResult> Index()
         {
-            return View(await _context.User.Where(u=>u.laboratory!=null).Include(l => l.laboratory).ToListAsync());
+            return View(/*await _context.User.Where(u=>u.laboratory!=null).Include(l => l.laboratory).ToListAsync()*/);
         }
 
         // GET: LabWorkers/Details/5
@@ -47,8 +47,8 @@ namespace ASP6_SinAuth.Controllers
  
             if (user != null)
             {
-                user.laboratory = _context.Laboratory.Find(laboratory);
-                _context.Update(user);
+                //user.laboratory = _context.Laboratory.Find(laboratory);
+                //_context.Update(user);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             } else

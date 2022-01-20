@@ -13,6 +13,8 @@ builder.Services.AddDefaultIdentity<User>(options => {
     options.SignIn.RequireConfirmedAccount = false;
     options.Password.RequireUppercase = false;
     options.Password.RequireLowercase = false;
+    options.Password.RequiredLength = 5;
+    options.Password.RequireNonAlphanumeric = false;
 }).AddRoles<IdentityRole>().AddEntityFrameworkStores<ctxDatos>();
 // Add services to the container.
 builder.Services.AddControllersWithViews(options =>

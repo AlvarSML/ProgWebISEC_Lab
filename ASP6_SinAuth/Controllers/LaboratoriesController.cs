@@ -8,23 +8,27 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ASP6_SinAuth.Data;
 using ASP6_SinAuth.Models;
+using Microsoft.AspNetCore.Identity;
+using ASP6_SinAuth.Areas.Identity.Data;
 
 namespace ASP6_SinAuth.Controllers
 {
     public class LaboratoriesController : Controller
     {
         private readonly ctxDatos _context;
+        private readonly UserManager<User> _userManager;
 
-        public LaboratoriesController(ctxDatos context)
+        public LaboratoriesController(ctxDatos context, UserManager<User> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Laboratories
         public async Task<IActionResult> Index()
         {
        
-            return View(await _context.Laboratory.ToListAsync());
+            return View(getLabsByOwner());
         }
 
         // GET: Laboratories/Details/5
@@ -60,6 +64,7 @@ namespace ASP6_SinAuth.Controllers
         {
             if (ModelState.IsValid)
             {
+                laboratory.LabOwner = _context.LaboratoryManager.Find(User);
                 _context.Add(laboratory);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -150,6 +155,14 @@ namespace ASP6_SinAuth.Controllers
         private bool LaboratoryExists(int id)
         {
             return _context.Laboratory.Any(e => e.Id == id);
+        }
+
+        private IEnumerable<Laboratory> getLabsByOwner()
+        {
+            string uid = _userManager.GetUserId(User);
+            LaboratoryManager lm = _context.LaboratoryManager.Find(uid);
+            return _context.Laboratory.Where(l => l.LabOwner == lm);
+
         }
     }
 }

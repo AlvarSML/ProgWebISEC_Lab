@@ -19,5 +19,8 @@ namespace ASP6_SinAuth.Models
         [Column(TypeName = "decimal(18, 2)")]
         public decimal price { get; set; }
 
+        [Column("id_laboratory")]
+        public Laboratory? laboratory { get; set; }
+
     }
 }

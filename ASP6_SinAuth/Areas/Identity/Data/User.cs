@@ -22,8 +22,8 @@ public class User : IdentityUser
     [PersonalData]
     public DateTime DOB { get; set; }
 
-    [ForeignKey("laboratoryId")]
-    public virtual Laboratory? laboratory { get; set; }
+    //[ForeignKey("laboratoryId")]
+    //public virtual Laboratory? laboratory { get; set; }
 
     
 }
