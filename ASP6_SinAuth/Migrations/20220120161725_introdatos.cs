@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ASP6_SinAuth.Migrations
 {
-    public partial class inicio : Migration
+    public partial class introdatos : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -178,28 +178,21 @@ namespace ASP6_SinAuth.Migrations
                 name: "Laboratory",
                 columns: table => new
                 {
-                    id_laboratory = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    id_laboratory = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     location = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LabOwnerId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    testId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    phone = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Laboratory", x => x.id_laboratory);
+                    table.PrimaryKey("PK_Laboratory", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Laboratory_AspNetUsers_LabOwnerId",
-                        column: x => x.LabOwnerId,
+                        name: "FK_Laboratory_AspNetUsers_Id",
+                        column: x => x.Id,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Laboratory_AspNetUsers_testId",
-                        column: x => x.testId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -230,7 +223,7 @@ namespace ASP6_SinAuth.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     NationalID = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    laboratoryId = table.Column<int>(type: "int", nullable: false)
+                    laboratoryId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -244,7 +237,7 @@ namespace ASP6_SinAuth.Migrations
                         name: "FK_LaboratoryWorkers_Laboratory_laboratoryId",
                         column: x => x.laboratoryId,
                         principalTable: "Laboratory",
-                        principalColumn: "id_laboratory",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -257,7 +250,7 @@ namespace ASP6_SinAuth.Migrations
                     title_type = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    laboratoryId = table.Column<int>(type: "int", nullable: true)
+                    laboratoryId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -266,7 +259,7 @@ namespace ASP6_SinAuth.Migrations
                         name: "FK_test_types_Laboratory_laboratoryId",
                         column: x => x.laboratoryId,
                         principalTable: "Laboratory",
-                        principalColumn: "id_laboratory");
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -281,7 +274,7 @@ namespace ASP6_SinAuth.Migrations
                     result = table.Column<int>(type: "int", nullable: true),
                     clientId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     typeId = table.Column<int>(type: "int", nullable: false),
-                    laboratoryId = table.Column<int>(type: "int", nullable: false),
+                    laboratoryId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     technicianId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
@@ -302,7 +295,7 @@ namespace ASP6_SinAuth.Migrations
                         name: "FK_Tests_Laboratory_laboratoryId",
                         column: x => x.laboratoryId,
                         principalTable: "Laboratory",
-                        principalColumn: "id_laboratory",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Tests_test_types_typeId",
@@ -327,9 +320,15 @@ namespace ASP6_SinAuth.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "DOB", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "b74ddd14-6340-4840-95c2-db12554843e5", 0, "79a7bd70-5685-45b6-9afa-23e04a0b7378", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin@admin.com", false, false, null, "Administrador", null, null, null, "1234567890", false, "295ce240-2cf3-4d99-bcf1-cba151e4520a", false, "Admin" },
-                    { "b74ddd14-6340-4840-95c2-db12554843e6", 0, "35effced-2ad5-48f4-bb8d-1a1b7135f66e", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "client@admin.com", false, false, null, "Cliente", null, null, null, "1234567890", false, "29a7497d-5bf9-428e-9e8b-93e7642b7d38", false, "Client" }
+                    { "b74ddd14-6340-4840-95c2-db12554843e5", 0, "bfc867ab-9889-4eca-b4a2-5f4d661031d4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin@admin.com", true, true, null, "Administrador", null, "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEPjHJ//WMB80teETAec4BPEnhSpLq13PHBrNgeCN3VOeXSU39XNIH5rpRwroaknHUg==", "1234567890", false, "b1426532-c3a6-45fb-85aa-02764221f03d", false, "Admin" },
+                    { "b74ddd14-6340-4840-95c2-db12554843e6", 0, "dddb78eb-c2ce-4962-9d0f-ead59f9005b4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "client@admin.com", true, true, null, "Cliente", null, "CLIENT@ADMIN.COM", "AQAAAAEAACcQAAAAEHjbRB0LNZesIjfx583aY8pPk6AmgPB5oX2KaSwZS9klnUSVWv0p5Us1bhHjN6HR8w==", "1234567890", false, "3ef1a567-7a1e-443d-8523-de80dc8934ff", false, "Client" },
+                    { "b74ddd14-6340-4840-95c2-db12554843e7", 0, "4bc8fbc7-dbe7-4957-936b-7aeee2c4f814", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "manager@manager.com", false, false, null, "Manager", null, null, null, "1234567890", false, "87f5357d-40e6-458d-93a3-8aa7c5cbefee", false, "Manager" }
                 });
+
+            migrationBuilder.InsertData(
+                table: "LaboratoryManagers",
+                columns: new[] { "Id", "CompanyAddress", "FirstName", "LastName", "NationalID" },
+                values: new object[] { "b74ddd14-6340-4840-95c2-db12554843e7", "gg", "Man", "Ager", "1234567890" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -369,16 +368,6 @@ namespace ASP6_SinAuth.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Laboratory_LabOwnerId",
-                table: "Laboratory",
-                column: "LabOwnerId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Laboratory_testId",
-                table: "Laboratory",
-                column: "testId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_LaboratoryWorkers_laboratoryId",

@@ -11,8 +11,7 @@ namespace ASP6_SinAuth.Models
         [Column("id_type")]
         public int Id { get; set; }
         [Column("title_type")]
-        public string type { get; set; }
-        
+        public string type { get; set; }        
         public string description { get; set; }
 
         [Range(0,float.MaxValue)]

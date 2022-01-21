@@ -98,16 +98,17 @@ namespace ASP6_SinAuth.Migrations
                         {
                             Id = "b74ddd14-6340-4840-95c2-db12554843e5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "75d597d6-f5f8-413d-8d1f-40ea858ecf77",
+                            ConcurrencyStamp = "c773b30b-1159-49a4-892a-1f07533b56b0",
                             DOB = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "admin@admin.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
+                            EmailConfirmed = true,
+                            LockoutEnabled = true,
                             Name = "Administrador",
-                            PasswordHash = "AQAAAAEAACcQAAAAEApPnTYKa9UBZWVsV6dnjMQh6np5s0T2duTMKAuCuMKRrgnOvYXsJDvSb0H04NLUdw==",
+                            NormalizedUserName = "ADMIN@ADMIN.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKN7R8pKVHN/pytGX+I4M2rgypZOG19VtK2zTalVPK3Noq+QjiKxgTBUhSbOlucuBg==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0502e4e1-904e-4189-9f8d-fc2d5889da49",
+                            SecurityStamp = "863ea56b-03f9-44e9-af87-f3d1e36b4599",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         },
@@ -115,16 +116,17 @@ namespace ASP6_SinAuth.Migrations
                         {
                             Id = "b74ddd14-6340-4840-95c2-db12554843e6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "85b339a3-9b75-4357-bacd-b9936d8fae82",
+                            ConcurrencyStamp = "1d261e35-54c3-44c0-8361-ce5017638c72",
                             DOB = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "client@admin.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
+                            EmailConfirmed = true,
+                            LockoutEnabled = true,
                             Name = "Cliente",
-                            PasswordHash = "AQAAAAEAACcQAAAAELKyBjgdhhAu/ZNQb3xnD4mACinuCRj0YrUdp0NpSQN389GZxaLQ+IvoiGPljmyBoQ==",
+                            NormalizedUserName = "CLIENT@ADMIN.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFlg4C42yxWqDMrgGORFStUZqDhbFXHkQJTS/Rs1KQFI2mxYruMBcb6abL5ts9O/jQ==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "67870817-1cc8-44fd-9f1b-905804ab6f45",
+                            SecurityStamp = "c5397ef7-b997-4bb8-b917-b21bb77cf171",
                             TwoFactorEnabled = false,
                             UserName = "Client"
                         });
@@ -132,15 +134,11 @@ namespace ASP6_SinAuth.Migrations
 
             modelBuilder.Entity("ASP6_SinAuth.Models.Laboratory", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                    b.Property<string>("IdLab")
+                        .HasColumnType("nvarchar(450)")
                         .HasColumnName("id_laboratory");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("LabOwnerId")
-                        .IsRequired()
+                    b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Location")
@@ -157,14 +155,9 @@ namespace ASP6_SinAuth.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("phone");
 
-                    b.Property<string>("testId")
-                        .HasColumnType("nvarchar(450)");
+                    b.HasKey("IdLab");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("LabOwnerId");
-
-                    b.HasIndex("testId");
+                    b.HasIndex("Id");
 
                     b.ToTable("Laboratory");
                 });
@@ -189,8 +182,9 @@ namespace ASP6_SinAuth.Migrations
                     b.Property<string>("description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("laboratoryId")
-                        .HasColumnType("int");
+                    b.Property<string>("laboratoryIdLab")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int?>("result")
                         .HasColumnType("int");
@@ -209,7 +203,7 @@ namespace ASP6_SinAuth.Migrations
 
                     b.HasIndex("clientId");
 
-                    b.HasIndex("laboratoryId");
+                    b.HasIndex("laboratoryIdLab");
 
                     b.HasIndex("technicianId");
 
@@ -231,8 +225,8 @@ namespace ASP6_SinAuth.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("laboratoryId")
-                        .HasColumnType("int");
+                    b.Property<string>("laboratoryIdLab")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<decimal>("price")
                         .HasColumnType("decimal(18,2)");
@@ -244,7 +238,7 @@ namespace ASP6_SinAuth.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("laboratoryId");
+                    b.HasIndex("laboratoryIdLab");
 
                     b.ToTable("test_types");
                 });
@@ -449,7 +443,7 @@ namespace ASP6_SinAuth.Migrations
                         {
                             Id = "b74ddd14-6340-4840-95c2-db12554843e7",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ed576098-b3db-4d1d-8530-38aa53072313",
+                            ConcurrencyStamp = "78c025ba-0ace-47ed-aa47-3e43a47004cd",
                             DOB = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "manager@manager.com",
                             EmailConfirmed = false,
@@ -457,7 +451,7 @@ namespace ASP6_SinAuth.Migrations
                             Name = "Manager",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "952ad219-655a-4b05-88ce-24aadd82c1b5",
+                            SecurityStamp = "88e24f28-5d8a-478c-80e6-8df8411bbe3e",
                             TwoFactorEnabled = false,
                             UserName = "Manager",
                             CompanyAddress = "gg",
@@ -483,10 +477,11 @@ namespace ASP6_SinAuth.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("laboratoryId")
-                        .HasColumnType("int");
+                    b.Property<string>("laboratoryIdLab")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
-                    b.HasIndex("laboratoryId");
+                    b.HasIndex("laboratoryIdLab");
 
                     b.ToTable("LaboratoryWorkers");
                 });
@@ -495,17 +490,9 @@ namespace ASP6_SinAuth.Migrations
                 {
                     b.HasOne("ASP6_SinAuth.Areas.Identity.Data.User", "LabOwner")
                         .WithMany()
-                        .HasForeignKey("LabOwnerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ASP6_SinAuth.Areas.Identity.Data.User", "test")
-                        .WithMany()
-                        .HasForeignKey("testId");
+                        .HasForeignKey("Id");
 
                     b.Navigation("LabOwner");
-
-                    b.Navigation("test");
                 });
 
             modelBuilder.Entity("ASP6_SinAuth.Models.Test", b =>
@@ -518,7 +505,7 @@ namespace ASP6_SinAuth.Migrations
 
                     b.HasOne("ASP6_SinAuth.Models.Laboratory", "laboratory")
                         .WithMany()
-                        .HasForeignKey("laboratoryId")
+                        .HasForeignKey("laboratoryIdLab")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -545,7 +532,7 @@ namespace ASP6_SinAuth.Migrations
                 {
                     b.HasOne("ASP6_SinAuth.Models.Laboratory", "laboratory")
                         .WithMany()
-                        .HasForeignKey("laboratoryId");
+                        .HasForeignKey("laboratoryIdLab");
 
                     b.Navigation("laboratory");
                 });
@@ -629,7 +616,7 @@ namespace ASP6_SinAuth.Migrations
 
                     b.HasOne("ASP6_SinAuth.Models.Laboratory", "laboratory")
                         .WithMany()
-                        .HasForeignKey("laboratoryId")
+                        .HasForeignKey("laboratoryIdLab")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

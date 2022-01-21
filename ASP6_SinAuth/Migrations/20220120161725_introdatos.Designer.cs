@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ASP6_SinAuth.Migrations
 {
     [DbContext(typeof(ctxDatos))]
-    [Migration("20220120132011_inicio")]
-    partial class inicio
+    [Migration("20220120161725_introdatos")]
+    partial class introdatos
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -100,15 +100,17 @@ namespace ASP6_SinAuth.Migrations
                         {
                             Id = "b74ddd14-6340-4840-95c2-db12554843e5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "79a7bd70-5685-45b6-9afa-23e04a0b7378",
+                            ConcurrencyStamp = "bfc867ab-9889-4eca-b4a2-5f4d661031d4",
                             DOB = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "admin@admin.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
+                            EmailConfirmed = true,
+                            LockoutEnabled = true,
                             Name = "Administrador",
+                            NormalizedUserName = "ADMIN@ADMIN.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPjHJ//WMB80teETAec4BPEnhSpLq13PHBrNgeCN3VOeXSU39XNIH5rpRwroaknHUg==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "295ce240-2cf3-4d99-bcf1-cba151e4520a",
+                            SecurityStamp = "b1426532-c3a6-45fb-85aa-02764221f03d",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         },
@@ -116,15 +118,17 @@ namespace ASP6_SinAuth.Migrations
                         {
                             Id = "b74ddd14-6340-4840-95c2-db12554843e6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "35effced-2ad5-48f4-bb8d-1a1b7135f66e",
+                            ConcurrencyStamp = "dddb78eb-c2ce-4962-9d0f-ead59f9005b4",
                             DOB = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "client@admin.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
+                            EmailConfirmed = true,
+                            LockoutEnabled = true,
                             Name = "Cliente",
+                            NormalizedUserName = "CLIENT@ADMIN.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHjbRB0LNZesIjfx583aY8pPk6AmgPB5oX2KaSwZS9klnUSVWv0p5Us1bhHjN6HR8w==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "29a7497d-5bf9-428e-9e8b-93e7642b7d38",
+                            SecurityStamp = "3ef1a567-7a1e-443d-8523-de80dc8934ff",
                             TwoFactorEnabled = false,
                             UserName = "Client"
                         });
@@ -132,16 +136,13 @@ namespace ASP6_SinAuth.Migrations
 
             modelBuilder.Entity("ASP6_SinAuth.Models.Laboratory", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("id_laboratory");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("LabOwnerId")
-                        .IsRequired()
+                    b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("IdLab")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("id_laboratory");
 
                     b.Property<string>("Location")
                         .IsRequired()
@@ -157,14 +158,7 @@ namespace ASP6_SinAuth.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("phone");
 
-                    b.Property<string>("testId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("LabOwnerId");
-
-                    b.HasIndex("testId");
 
                     b.ToTable("Laboratory");
                 });
@@ -189,8 +183,9 @@ namespace ASP6_SinAuth.Migrations
                     b.Property<string>("description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("laboratoryId")
-                        .HasColumnType("int");
+                    b.Property<string>("laboratoryId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int?>("result")
                         .HasColumnType("int");
@@ -231,8 +226,8 @@ namespace ASP6_SinAuth.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("laboratoryId")
-                        .HasColumnType("int");
+                    b.Property<string>("laboratoryId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<decimal>("price")
                         .HasColumnType("decimal(18,2)");
@@ -443,6 +438,28 @@ namespace ASP6_SinAuth.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.ToTable("LaboratoryManagers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "b74ddd14-6340-4840-95c2-db12554843e7",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "4bc8fbc7-dbe7-4957-936b-7aeee2c4f814",
+                            DOB = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "manager@manager.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            Name = "Manager",
+                            PhoneNumber = "1234567890",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "87f5357d-40e6-458d-93a3-8aa7c5cbefee",
+                            TwoFactorEnabled = false,
+                            UserName = "Manager",
+                            CompanyAddress = "gg",
+                            FirstName = "Man",
+                            LastName = "Ager",
+                            NationalID = "1234567890"
+                        });
                 });
 
             modelBuilder.Entity("ASP6_SinAuth.Models.LaboratoryWorker", b =>
@@ -461,8 +478,9 @@ namespace ASP6_SinAuth.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("laboratoryId")
-                        .HasColumnType("int");
+                    b.Property<string>("laboratoryId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasIndex("laboratoryId");
 
@@ -473,17 +491,11 @@ namespace ASP6_SinAuth.Migrations
                 {
                     b.HasOne("ASP6_SinAuth.Areas.Identity.Data.User", "LabOwner")
                         .WithMany()
-                        .HasForeignKey("LabOwnerId")
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ASP6_SinAuth.Areas.Identity.Data.User", "test")
-                        .WithMany()
-                        .HasForeignKey("testId");
-
                     b.Navigation("LabOwner");
-
-                    b.Navigation("test");
                 });
 
             modelBuilder.Entity("ASP6_SinAuth.Models.Test", b =>

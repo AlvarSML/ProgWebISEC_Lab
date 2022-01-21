@@ -6,8 +6,9 @@ namespace ASP6_SinAuth.Models
 {
     public class Laboratory
     {
+        [Key]
         [Column("id_laboratory")]
-        public int Id { get; set; }
+        public string IdLab { get; set; }
         [Column("name")]
         [Required]
         public string Name { get; set; }
@@ -17,9 +18,7 @@ namespace ASP6_SinAuth.Models
         public string? Phone { get; set; }
 
         [Column("LabOwnerId")]
-        [Required]
+        [ForeignKey("Id")]
         public virtual User LabOwner { get; set; }
-
-        public virtual User test { get; set; }
     }
 }
