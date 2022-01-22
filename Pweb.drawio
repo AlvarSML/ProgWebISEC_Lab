@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-01-22T23:13:55.816Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36 OPR/82.0.4227.58" etag="2o2iYRc-lkHXpmVSOnUW" version="16.4.5" type="github" pages="8">
+<mxfile host="app.diagrams.net" modified="2022-01-22T23:17:10.217Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36 OPR/82.0.4227.58" etag="Cm9FecUG8bQQ6l-qyw82" version="16.4.5" type="github" pages="8">
   <diagram id="7orB8Zpsbt01PdsIqDaH" name="Casos de uso">
     <mxGraphModel dx="2009" dy="1039" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -1201,6 +1201,18 @@
         </mxCell>
         <mxCell id="IrW9n_SiSqlpoH7qgEGF-81" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="IrW9n_SiSqlpoH7qgEGF-78">
           <mxGeometry y="118" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="IrW9n_SiSqlpoH7qgEGF-83" value="*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="IrW9n_SiSqlpoH7qgEGF-1">
+          <mxGeometry x="1181" y="169" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="IrW9n_SiSqlpoH7qgEGF-84" value="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="IrW9n_SiSqlpoH7qgEGF-1">
+          <mxGeometry x="1190" y="384" width="50" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="IrW9n_SiSqlpoH7qgEGF-85" value="*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="IrW9n_SiSqlpoH7qgEGF-1">
+          <mxGeometry x="1194" y="412" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="IrW9n_SiSqlpoH7qgEGF-86" value="*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="IrW9n_SiSqlpoH7qgEGF-1">
+          <mxGeometry x="1182" y="217" width="60" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
