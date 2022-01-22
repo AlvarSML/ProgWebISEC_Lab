@@ -38,15 +38,33 @@ namespace ASP6_SinAuth.Controllers
             public float price { get; set; }
         }
 
+
+
         // GET: TestTypes
-        [Authorize(Roles="LaboratoryManager")]
+        [Authorize(Roles = "LaboratoryManager")]
         public async Task<IActionResult> Index()
         {
             string uid = _userManager.GetUserId(User);
             LaboratoryManager lm = _context.LaboratoryManager.Find(uid);
             IEnumerable<Laboratory> labs = _context.Laboratory.Where(l => l.LabOwner == lm);
 
-            return View(await _context.TestType.Where(t=>labs.Contains(t.laboratory)).ToListAsync());
+            return View(await _context.TestType.Include(t=>t.laboratory).Where(t=>labs.Contains(t.laboratory)).ToListAsync());
+        }
+
+        // GET: TestTypes/Public/[filter]
+        public async Task<IActionResult> Public(string? filter)
+        {
+            if (!String.IsNullOrEmpty(filter))
+            {
+                return View(await _context.TestType
+                    .Include(t => t.laboratory)
+                    .Where(t=>(t.type.Contains(filter) || t.description.Contains(filter) || t.laboratory.Name.Contains(filter) || t.laboratory.Location.Contains(filter)))
+                    .ToListAsync());
+            }
+
+            return View(await _context.TestType
+                .Include(t => t.laboratory)
+                .ToListAsync());
         }
 
         // GET: TestTypes/Details/5
@@ -97,7 +115,7 @@ namespace ASP6_SinAuth.Controllers
         }
 
         // GET: TestTypes/Edit/5
-        [Authorize(Roles = "admin, manager")]
+        [Authorize(Roles = "LaboratoryManager")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -118,7 +136,7 @@ namespace ASP6_SinAuth.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "admin, manager")]
+        [Authorize(Roles = "LaboratoryManager")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,type,description,price")] TestType testType,string price)
         {
             Decimal p;
@@ -153,7 +171,7 @@ namespace ASP6_SinAuth.Controllers
         }
 
         // GET: TestTypes/Delete/5
-        [Authorize(Roles = "admin, manager")]
+        [Authorize(Roles = "LaboratoryManager")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -172,7 +190,7 @@ namespace ASP6_SinAuth.Controllers
         }
 
         // POST: TestTypes/Delete/5
-        [Authorize(Roles = "admin, manager")]
+        [Authorize(Roles = "LaboratoryManager")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

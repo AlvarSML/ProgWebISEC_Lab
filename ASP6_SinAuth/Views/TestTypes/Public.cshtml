@@ -9,28 +9,37 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
+<h1>Avaible tests</h1>
+@using (Html.BeginForm(FormMethod.Get))
+{
+    <p>
+        Search: @Html.TextBox("filter")
+        <input type="submit" value="Filter" />
+    </p>
+}
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.type)
+                Test type
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.description)
+                Description
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.price)
+                Price
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.laboratory.Name)
+                Laboratory
+            </th>
+            <th>
+                Location
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (TestType item in Model)
         {
             <tr>
                 <td>
@@ -46,13 +55,12 @@
                     @Html.DisplayFor(modelItem => item.laboratory.Name)
                 </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.laboratory.Location)
+                </td>
+                <td>
                     @if (SignInManager.IsSignedIn(User))
                     {
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                        <span>|</span>
-                        <a asp-action="Details" asp-route-id="@item.Id"> Details </a>
-                        <span>|</span>
-                        <a asp-action="Delete" asp-route-id="@item.Id"> Delete </a>
+                        <a asp-controller="Tests" asp-action="Create" asp-route-id="@item.Id">Order</a>
                     }
                 </td>
             </tr>

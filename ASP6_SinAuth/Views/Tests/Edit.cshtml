@@ -1,4 +1,5 @@
-﻿@model ASP6_SinAuth.Models.Test
+﻿@using static ASP6_SinAuth.Controllers.TestsController
+@model TestEdit
 
 @{
     ViewData["Title"] = "Edit";
@@ -12,16 +13,13 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="technicianId" />
+            <input type="hidden" asp-for="testId" />
+
             <div class="form-group">
-                <label asp-for="description" class="control-label"></label>
-                <input asp-for="description" class="form-control" />
-                <span asp-validation-for="description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="testDate" class="control-label"></label>
-                <input asp-for="testDate" class="form-control" />
-                <span asp-validation-for="testDate" class="text-danger"></span>
+                <label asp-for="comment" class="control-label"></label>
+                <input asp-for="comment" class="form-control" />
+                <span asp-validation-for="comment" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="result" class="control-label"></label>

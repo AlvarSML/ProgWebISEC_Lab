@@ -39,6 +39,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3RlckxhYk1hbmFnZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/alvar/source/repos/ASP6_SinAuth/ProgWebISEC_Lab/ASP6_SinAuth/Areas/Identity/Pages/Account/RegisterLabWorker.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3RlckxhYldvcmtlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/alvar/source/repos/ASP6_SinAuth/ProgWebISEC_Lab/ASP6_SinAuth/Areas/Identity/Pages/Account/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -91,8 +95,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFiV29ya2Vyc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/alvar/source/repos/ASP6_SinAuth/ProgWebISEC_Lab/ASP6_SinAuth/Views/LabWorkers/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFiV29ya2Vyc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/alvar/source/repos/ASP6_SinAuth/ProgWebISEC_Lab/ASP6_SinAuth/Views/LabWorkers/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFiV29ya2Vyc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alvar/source/repos/ASP6_SinAuth/ProgWebISEC_Lab/ASP6_SinAuth/Views/LabWorkers/ListLab.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFiV29ya2Vyc1xMaXN0TGFiLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/alvar/source/repos/ASP6_SinAuth/ProgWebISEC_Lab/ASP6_SinAuth/Views/Roles/Create.cshtml]
@@ -169,6 +181,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/alvar/source/repos/ASP6_SinAuth/ProgWebISEC_Lab/ASP6_SinAuth/Views/TestTypes/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFR5cGVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alvar/source/repos/ASP6_SinAuth/ProgWebISEC_Lab/ASP6_SinAuth/Views/TestTypes/Public.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFR5cGVzXFB1YmxpYy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/alvar/source/repos/ASP6_SinAuth/ProgWebISEC_Lab/ASP6_SinAuth/Views/_ViewImports.cshtml]

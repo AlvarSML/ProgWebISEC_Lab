@@ -2,9 +2,11 @@
 using ASP6_SinAuth.Data;
 using ASP6_SinAuth.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace ASP6_SinAuth.Controllers
 {
@@ -12,16 +14,79 @@ namespace ASP6_SinAuth.Controllers
     {
 
         private readonly ctxDatos _context;
+        private readonly UserManager<User> _userManager;
+        private readonly IUserStore<User> _userStore;
+        private readonly IUserEmailStore<User> _emailStore;
 
-        public LabWorkers(ctxDatos context)
+        public LabWorkers(
+            ctxDatos context,
+            UserManager<User> userManager,
+            IUserStore<User> userStore)
         {
             _context = context;
+            _userManager = userManager;
+            _userStore = userStore;
+            _emailStore = GetEmailStore();
         }
 
-        // GET: LabWorkers
-        public async Task<IActionResult> Index()
+        public class LabWorkerInput
         {
-            return View(/*await _context.User.Where(u=>u.laboratory!=null).Include(l => l.laboratory).ToListAsync()*/);
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "First Name")]
+            public string FirstName { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Last Name")]
+            public string LastName { get; set; }
+
+            [Required]
+            [EmailAddress]
+            [Display(Name = "Email")]
+            public string Email { get; set; }
+
+            [Required]
+            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [DataType(DataType.Password)]
+            [Display(Name = "Password")]
+            public string Password { get; set; }
+
+            [DataType(DataType.Password)]
+            [Display(Name = "Confirm password")]
+            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            public string ConfirmPassword { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "NationalId")]
+            public string NationalId { get; set; }
+
+            [Required]
+            public string LabId { get; set; }
+        }
+
+        // GET: LabWorkers/[idlab]
+        public async Task<IActionResult> Index(string Id)
+        {
+            IEnumerable<LaboratoryWorker> lw;
+
+            if (!string.IsNullOrEmpty(Id))
+            {
+                ViewBag.labName = _context.Laboratory.Find(Id).Name;
+                ViewBag.labId = Id;
+
+                lw = await _context.LaboratoryWorker
+               .Include(lw => lw.laboratory)
+               .Where(lw => lw.laboratory.IdLab == Id)
+               .ToListAsync();
+            }
+            else
+            {
+                lw = new List<LaboratoryWorker>();
+            }
+
+            return View(lw);
         }
 
         // GET: LabWorkers/Details/5
@@ -31,31 +96,56 @@ namespace ASP6_SinAuth.Controllers
         }
 
         // GET: LabWorkers/Create
-        public ActionResult Create()
+        public ActionResult Create(string Id)
         {
-            ViewBag.Id = new SelectList(_context.User, "Id", "Email");
-            ViewBag.Laboratory = new SelectList(_context.Laboratory, "Id", "Name");
-            return View();
+            return View(new LabWorkerInput()
+            {
+                LabId = Id
+            });
         }
 
         // POST: LabWorkers/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(string Id, int laboratory)
+        public async Task<IActionResult> Create(LabWorkerInput Input)
         {
-            User user = _context.User.Find(Id);
- 
-            if (user != null)
+            PasswordHasher<User> passwordHasher = new PasswordHasher<User>();
+            Laboratory lab = _context.Laboratory.Find(Input.LabId);
+
+            LaboratoryWorker lw = new LaboratoryWorker();
+
+            if (ModelState.IsValid)
             {
-                //user.laboratory = _context.Laboratory.Find(laboratory);
-                //_context.Update(user);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
-            } else
-            {
-                Console.WriteLine("Error creatring the worker ");
+                LaboratoryWorker user = new LaboratoryWorker
+                {
+                    Name = Input.FirstName,
+                    FirstName = Input.FirstName,
+                    LastName = Input.LastName,
+                    NationalID = Input.NationalId,
+                    laboratory = lab
+                };
+
+                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+                await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+
+                var result = await _userManager.CreateAsync(user, Input.Password);
+
+                if (result.Succeeded)
+                {
+                    // Add role
+                    User usr = await _userManager.FindByIdAsync(_userManager.GetUserId(User));
+                    if (user != null)
+                    {
+                        result = await _userManager.AddToRoleAsync(user, "Laboratory Worker");
+                    }
+                }
+
+                return RedirectToAction(nameof(Index), new { Id = Input.LabId });
             }
-            return View(user);
+            else
+            {
+                return View(Input);
+            }
         }
 
         // GET: LabWorkers/Edit/5
@@ -98,6 +188,15 @@ namespace ASP6_SinAuth.Controllers
             {
                 return View();
             }
+        }
+
+        private IUserEmailStore<User> GetEmailStore()
+        {
+            if (!_userManager.SupportsUserEmail)
+            {
+                throw new NotSupportedException("The default UI requires a user store with email support.");
+            }
+            return (IUserEmailStore<User>)_userStore;
         }
     }
 }

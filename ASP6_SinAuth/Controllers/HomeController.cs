@@ -31,7 +31,7 @@ namespace ASP6_SinAuth.Controllers
                 string userId = _userManager.GetUserId(User);
 
 
-                /*IEnumerable<Test> testsUser = await _context.Test
+                IEnumerable<Test> testsUser = await _context.Test
                     .Include(t => t.client)
                     .Where(t => t.client.Id == userId)
                     .Include(t => t.type)
@@ -42,9 +42,8 @@ namespace ASP6_SinAuth.Controllers
                 ch.FutureTests = testsUser
                     .Where(t => t.testDate.CompareTo(DateTime.Now) > 0);
 
-
                 ch.Results = testsUser
-                    .Where(t => t.result != null); */
+                    .Where(t => t.result != null);
 
                 return View(ch);
             } else

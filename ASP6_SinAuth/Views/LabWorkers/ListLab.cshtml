@@ -1,21 +1,23 @@
-﻿
+﻿@using ASP6_SinAuth.Areas.Identity.Data
 @model IEnumerable<LaboratoryWorker>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "lab workers";
 }
 
-<h1>Laboratory workers</h1>
-<h4>Labid: @ViewBag.labId</h4>
+<h1>Working in the lab @ViewBag.LabId</h1>
 <p>
-    <a asp-action="Create" asp-route-id="@ViewBag.labId">Create New</a>
+    <a asp-action="Create"  asp-route-id="ViewBag.LabId">Add new worker</a>
 </p>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.laboratory.Name)
@@ -31,10 +33,13 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => item.FirstName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.laboratory.Name)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Email)
@@ -46,4 +51,3 @@
         }
     </tbody>
 </table>
-

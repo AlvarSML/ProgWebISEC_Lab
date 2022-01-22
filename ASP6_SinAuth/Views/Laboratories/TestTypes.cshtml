@@ -7,7 +7,7 @@
 
 <h1>Create</h1>
 
-<h4>Laboratory</h4>
+<h4>Test Type</h4>
 
 <div clas="row">
     <table class="table">
@@ -39,7 +39,7 @@
                         @Html.DisplayFor(modelItem => tt.price)
                     </td>
                     <td>
-                        <a asp-action="Delete">Delete</a>
+                        <a asp-controller="TestTypes" asp-action="Delete" asp-route-id="@tt.Id">Delete</a>
                     </td>
                 </tr>
             }

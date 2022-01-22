@@ -17,15 +17,44 @@
     @if (SignInManager.IsSignedIn(User))
     {
         <h1 class="display-4">Main menu</h1>
-        <a class="btn btn-sm btn-primary" asp-controller="Tests" asp-action="Create">Book a test</a>
-        <a class="btn btn-sm btn-primary" asp-controller="TestTypes" asp-action="">Catalog</a>
+        <a class="btn btn-sm btn-primary" asp-controller="TestTypes" asp-action="Public">Catalog</a>
         <div class="row">
             <div class="col-md-8">
                 <h3 class="display-6">Planned tests</h3>
                 <table class="table table-sm table-bordered table-bordered">
                     <tr><th>Test Type</th><th>Date</th><th>Lab</th><th>Update</th><th>Delete</th></tr>
-
-
+                    @foreach (var test in Model.FutureTests)
+                    {
+                        <tr>
+                            <td>@test.type.description</td>
+                            <td>@test.testDate</td>
+                            <td>@test.laboratory.Name - @test.laboratory.Location</td>
+                            <td>
+                                @if ((test.testDate - DateTime.Now) > TimeSpan.FromHours(24))
+                                {
+                                    <a class="btn btn-sm btn-primary" asp-controller="Tests" asp-action="Edit" asp-route-id="@test.Id">Update</a>
+                                }
+                                else
+                                {
+                                    <span>Less than 24h remaining</span>
+                                }
+                            </td>
+                            <td>
+                                @if ((test.testDate - DateTime.Now) > TimeSpan.FromHours(24))
+                                {
+                                    <a asp-controller="Tests" asp-action="Delete" asp-route-id="@test.Id" method="post">
+                                        <button type="submit" class="btn btn-sm btn-danger">
+                                            Cancel booking
+                                        </button>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <span>Less than 24h remaining</span>
+                                }
+                            </td>
+                        </tr>
+                    }
                 </table>
             </div>
 
@@ -33,13 +62,20 @@
                 <h3 class="display-6">Test results</h3>
                 <table class="table table-sm table-bordered table-bordered">
                     <tr><th>Test Type</th><th>Date</th><th>Result</th></tr>
-
+                    @foreach (var test in Model.Results)
+                    {
+                        <tr>
+                            <td>@test.type.description</td>
+                            <td>@test.testDate</td>
+                            <td>@test.result</td>
+                        </tr>
+                    }
                 </table>
             </div>
         </div>
 
         // Technician menu
-        @if (User.IsInRole("LaboratoryWorker") || User.IsInRole("LABORATORYWORKER"))
+        @if (User.IsInRole("LaboratoryWorker"))
         {
             <h3>Laboratory menu</h3>
             <a class="btn btn-sm btn-primary" asp-controller="Tests" asp-action="LabView">Tests in the lab</a>
@@ -78,13 +114,8 @@
                 <a class="btn btn-sm btn-primary" asp-controller="Tests" asp-action="">Tests</a>
                 <br />
                 <a class="btn btn-sm btn-primary" asp-controller="Laboratories">Your Laboratories</a>
-
-                <br />
-                <a class="btn btn-sm btn-primary" asp-controller="LabWorkers">Lab. Workers</a>
-
                 <br />
                 <a class="btn btn-sm btn-primary" asp-controller="">Clients of the laboratories</a>
-
                 <br />
                 <a class="btn btn-sm btn-primary" asp-controller="TestsType" asp-action="">Test types</a>
                 <br />
