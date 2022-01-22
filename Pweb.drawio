@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-01-22T22:42:34.544Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36 OPR/82.0.4227.58" etag="uwTdGDpHi4g_-G68pQ8n" version="16.4.5" type="github" pages="8">
+<mxfile host="app.diagrams.net" modified="2022-01-22T23:13:55.816Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36 OPR/82.0.4227.58" etag="2o2iYRc-lkHXpmVSOnUW" version="16.4.5" type="github" pages="8">
   <diagram id="7orB8Zpsbt01PdsIqDaH" name="Casos de uso">
     <mxGraphModel dx="2009" dy="1039" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -1145,24 +1145,6 @@
         <mxCell id="IrW9n_SiSqlpoH7qgEGF-56" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="IrW9n_SiSqlpoH7qgEGF-53">
           <mxGeometry y="98" width="160" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="IrW9n_SiSqlpoH7qgEGF-57" value="Admin" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="IrW9n_SiSqlpoH7qgEGF-1">
-          <mxGeometry x="1140" y="-70" width="160" height="86" as="geometry" />
-        </mxCell>
-        <mxCell id="IrW9n_SiSqlpoH7qgEGF-58" value="+ field: type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="IrW9n_SiSqlpoH7qgEGF-57">
-          <mxGeometry y="26" width="160" height="26" as="geometry" />
-        </mxCell>
-        <mxCell id="IrW9n_SiSqlpoH7qgEGF-59" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="IrW9n_SiSqlpoH7qgEGF-57">
-          <mxGeometry y="52" width="160" height="8" as="geometry" />
-        </mxCell>
-        <mxCell id="IrW9n_SiSqlpoH7qgEGF-60" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="IrW9n_SiSqlpoH7qgEGF-57">
-          <mxGeometry y="60" width="160" height="26" as="geometry" />
-        </mxCell>
-        <mxCell id="IrW9n_SiSqlpoH7qgEGF-61" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;strokeWidth=1;" edge="1" parent="IrW9n_SiSqlpoH7qgEGF-1" target="IrW9n_SiSqlpoH7qgEGF-48">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1140" y="-50" as="sourcePoint" />
-            <mxPoint x="892.9000000000001" y="-104" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="IrW9n_SiSqlpoH7qgEGF-62" value="Login" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="IrW9n_SiSqlpoH7qgEGF-1">
           <mxGeometry x="1180" y="-212" width="160" height="110" as="geometry" />
         </mxCell>
@@ -1184,20 +1166,20 @@
             <mxPoint x="912.7999999999997" y="-59.06799999999976" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="IrW9n_SiSqlpoH7qgEGF-72" value="" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="IrW9n_SiSqlpoH7qgEGF-1" source="IrW9n_SiSqlpoH7qgEGF-79" target="IrW9n_SiSqlpoH7qgEGF-75">
+        <mxCell id="IrW9n_SiSqlpoH7qgEGF-72" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.51;exitY=1.028;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="IrW9n_SiSqlpoH7qgEGF-1" source="IrW9n_SiSqlpoH7qgEGF-81" target="IrW9n_SiSqlpoH7qgEGF-74">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1590" y="103.00000000000023" as="sourcePoint" />
             <mxPoint x="1740" y="118.00000000000023" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="IrW9n_SiSqlpoH7qgEGF-73" value="" style="endArrow=none;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.993;entryY=0.582;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="IrW9n_SiSqlpoH7qgEGF-1" source="IrW9n_SiSqlpoH7qgEGF-79" target="IrW9n_SiSqlpoH7qgEGF-54">
+        <mxCell id="IrW9n_SiSqlpoH7qgEGF-73" value="" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.447;entryY=1.092;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="IrW9n_SiSqlpoH7qgEGF-1" source="IrW9n_SiSqlpoH7qgEGF-78" target="IrW9n_SiSqlpoH7qgEGF-56">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1430" y="103.00000000000023" as="sourcePoint" />
             <mxPoint x="1130" y="160" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="IrW9n_SiSqlpoH7qgEGF-74" value="Test" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="IrW9n_SiSqlpoH7qgEGF-1">
-          <mxGeometry x="1620" y="30" width="160" height="164" as="geometry" />
+          <mxGeometry x="1120" y="430" width="160" height="164" as="geometry" />
         </mxCell>
         <mxCell id="IrW9n_SiSqlpoH7qgEGF-75" value="+ Id: int&#xa;+ creationDate: DateTime&#xa;+ testDate: DateTime&#xa;+ client: User&#xa;+ type: TestType&#xa;+ laboratory: Laboratory&#xa;+ technician: User" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="IrW9n_SiSqlpoH7qgEGF-74">
           <mxGeometry y="26" width="160" height="104" as="geometry" />
@@ -1209,7 +1191,7 @@
           <mxGeometry y="138" width="160" height="26" as="geometry" />
         </mxCell>
         <mxCell id="IrW9n_SiSqlpoH7qgEGF-78" value="TestType" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="IrW9n_SiSqlpoH7qgEGF-1">
-          <mxGeometry x="1390" y="40" width="160" height="144" as="geometry" />
+          <mxGeometry x="1120" y="240" width="160" height="144" as="geometry" />
         </mxCell>
         <mxCell id="IrW9n_SiSqlpoH7qgEGF-79" value="+ Id: int&#xa;+ type: string&#xa;+ description: string&#xa;+price: decimal&#xa;+ laboratory: laboratory" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="IrW9n_SiSqlpoH7qgEGF-78">
           <mxGeometry y="26" width="160" height="84" as="geometry" />
