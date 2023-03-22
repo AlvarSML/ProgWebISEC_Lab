@@ -10,7 +10,7 @@
 @model ClientHome
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "";
 }
 
 <div class="text-center">
@@ -75,16 +75,16 @@
         </div>
 
         // Technician menu
-        @if (User.IsInRole("LaboratoryWorker"))
-        {
+        //@if (User.IsInRole("LaboratoryWorker") || User.IsInRole("Laboratory Worker"))
+        
             <h3>Laboratory menu</h3>
             <a class="btn btn-sm btn-primary" asp-controller="Tests" asp-action="LabView">Tests in the lab</a>
             <hr />
-        }
+         
 
-        // Admin menu
-        @if (User.IsInRole("Admin"))
-        {
+    // Admin menu
+        //@if (User.IsInRole("Admin"))
+        @*{*@
             <h3>Admin menu</h3>
             <hr />
             <a class="btn btn-sm btn-primary" asp-controller="Tests" asp-action="">Tests</a>
@@ -103,7 +103,7 @@
             <br />
             <a class="btn btn-sm btn-primary" asp-controller="TestsType" asp-action="">Clients</a>
             <br />
-        }
+        @*}*@
 
         // Manager menu
         @if (User.IsInRole("LaboratoryManager"))

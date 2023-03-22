@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3e+2hmbn8QRBhE8YsItO6M5Oc0ex+y4mv3OS3RdP0+OELbRuwCNMQzjS8cASY5TmGiNaz0+BHF7QzGSCh47OYQ==",
+  "dgSpecHash": "aK3ty9s2NzERaiV40jWq2v64ZerQwqBWuVcbdiJpJybCCkViaPuYjZdeIDSn09s4QH4aU8g//bBnayv4E705xA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\alvar\\source\\repos\\ASP6_SinAuth\\ProgWebISEC_Lab\\ASP6_SinAuth\\ASP6_SinAuth.csproj",
+  "projectFilePath": "C:\\Users\\alvar\\source\\repos\\ASP6_SinAuth\\ProgWebISEC_Lab\\ASP6_SinAuth\\AlvarSanMartin_AlejandroDeCastro_B.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alvar\\.nuget\\packages\\cldrjs\\0.5.1\\cldrjs.0.5.1.nupkg.sha512",
     "C:\\Users\\alvar\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

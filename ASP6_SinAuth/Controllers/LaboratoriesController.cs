@@ -45,7 +45,7 @@ namespace ASP6_SinAuth.Controllers
         // GET: Laboratories
         public async Task<IActionResult> Index()
         {
-
+            
             return View(getLabsByOwner());
         }
 
@@ -246,8 +246,14 @@ namespace ASP6_SinAuth.Controllers
 
         private IEnumerable<Laboratory> getLabsByOwner()
         {
-
-            return _context.Laboratory.Where(l => l.LabOwner == getManager());
+            if (User.IsInRole("Admin") || true)
+            {
+                return _context.Laboratory.ToList();
+            } else
+            {
+                return _context.Laboratory.Where(l => l.LabOwner == getManager());
+            }
+            
         }
 
         private LaboratoryManager getManager()

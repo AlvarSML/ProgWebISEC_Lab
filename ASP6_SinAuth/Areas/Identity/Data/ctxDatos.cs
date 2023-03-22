@@ -68,16 +68,18 @@ public class ctxDatos : IdentityDbContext<User>
             UserName = "Manager",
             Name = "Manager",
             Email = "manager@manager.com",
+            NormalizedUserName="MANAGER@MANAGER.COM",
             LockoutEnabled = false,
             PhoneNumber = "1234567890",
             FirstName = "Man",
             LastName = "Ager",
             NationalID = "1234567890",
             CompanyAddress = "gg"
-        };        
+        };
 
-        passwordHasher.HashPassword(lm, "asd1234");
+        hash = passwordHasher.HashPassword(lm, "asd1234");
         builder.Entity<LaboratoryManager>().HasData(lm);
+        lm.PasswordHash = hash;
         //builder.Entity<Laboratory>().HasData(l1);
 
         builder.Entity<IdentityRole>().HasData(

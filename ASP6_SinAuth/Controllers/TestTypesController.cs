@@ -41,7 +41,7 @@ namespace ASP6_SinAuth.Controllers
 
 
         // GET: TestTypes
-        [Authorize(Roles = "LaboratoryManager")]
+        //[Authorize(Roles = "LaboratoryManager")]
         public async Task<IActionResult> Index()
         {
             string uid = _userManager.GetUserId(User);

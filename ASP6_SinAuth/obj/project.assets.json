@@ -9936,9 +9936,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\alvar\\source\\repos\\ASP6_SinAuth\\ProgWebISEC_Lab\\ASP6_SinAuth\\ASP6_SinAuth.csproj",
-      "projectName": "ASP6_SinAuth",
-      "projectPath": "C:\\Users\\alvar\\source\\repos\\ASP6_SinAuth\\ProgWebISEC_Lab\\ASP6_SinAuth\\ASP6_SinAuth.csproj",
+      "projectUniqueName": "C:\\Users\\alvar\\source\\repos\\ASP6_SinAuth\\ProgWebISEC_Lab\\ASP6_SinAuth\\AlvarSanMartin_AlejandroDeCastro_B.csproj",
+      "projectName": "AlvarSanMartin_AlejandroDeCastro_B",
+      "projectPath": "C:\\Users\\alvar\\source\\repos\\ASP6_SinAuth\\ProgWebISEC_Lab\\ASP6_SinAuth\\AlvarSanMartin_AlejandroDeCastro_B.csproj",
       "packagesPath": "C:\\Users\\alvar\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\alvar\\source\\repos\\ASP6_SinAuth\\ProgWebISEC_Lab\\ASP6_SinAuth\\obj\\",
       "projectStyle": "PackageReference",
